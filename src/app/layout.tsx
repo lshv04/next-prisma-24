@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Leandro's Login",
+  title: "Prisma",
   description: "Generated with next and kinde",
 };
 
