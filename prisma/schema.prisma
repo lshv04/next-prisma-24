@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+  // binaryTargets = ["native", "rhel-openssl-1.0.x"] // Optional for more verbose logs
+  // log    = ["query", "info", "warn", "error"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int    @id @default(autoincrement())
+  kindeId   String @unique
+  email     String @unique
+  firstName String
+  lastName  String
+}
+
+model Submission {
+  id        Int      @id @default(autoincrement())
+  userId    String   // ID do usuário retornado pelo Kinde
+  option    String   // Opção selecionada no formulário
+  createdAt DateTime @default(now())
+}
