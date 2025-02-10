@@ -1,99 +1,178 @@
-// pages/services.tsx
 "use client"
-import type { NextPage } from "next";
-import { useState } from "react";
+
+import * as React from "react"
+import * as LabelPrimitive from "@radix-ui/react-label"
+import { Slot } from "@radix-ui/react-slot"
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
- 
-} from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
+  Controller,
+  ControllerProps,
+  FieldPath,
+  FieldValues,
+  FormProvider,
+  useFormContext,
+} from "react-hook-form"
 
-const Form: NextPage = () => {
-  const [selectedOption, setSelectedOption] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [feedback, setFeedback] = useState("");
+import { cn } from "@/lib/utils"
+import { Label } from "@/components/ui/label"
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+const Form = FormProvider
 
-    // Validação simples: se nenhuma opção for selecionada, não envia
-    if (!selectedOption) {
-      setFeedback("Por favor, selecione uma opção.");
-      return;
-    }
+type FormFieldContextValue<
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+> = {
+  name: TName
+}
 
-    setLoading(true);
-    setFeedback("");
+const FormFieldContext = React.createContext<FormFieldContextValue>(
+  {} as FormFieldContextValue
+)
 
-    try {
-      const response = await fetch("/api/submission", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ option: selectedOption }),
-      });
+const FormField = <
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+>({
+  ...props
+}: ControllerProps<TFieldValues, TName>) => {
+  return (
+    <FormFieldContext.Provider value={{ name: props.name }}>
+      <Controller {...props} />
+    </FormFieldContext.Provider>
+  )
+}
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Erro ao enviar a submissão.");
+const useFormField = () => {
+  const fieldContext = React.useContext(FormFieldContext)
+  const itemContext = React.useContext(FormItemContext)
+  const { getFieldState, formState } = useFormContext()
+
+  const fieldState = getFieldState(fieldContext.name, formState)
+
+  if (!fieldContext) {
+    throw new Error("useFormField should be used within <FormField>")
+  }
+
+  const { id } = itemContext
+
+  return {
+    id,
+    name: fieldContext.name,
+    formItemId: `${id}-form-item`,
+    formDescriptionId: `${id}-form-item-description`,
+    formMessageId: `${id}-form-item-message`,
+    ...fieldState,
+  }
+}
+
+type FormItemContextValue = {
+  id: string
+}
+
+const FormItemContext = React.createContext<FormItemContextValue>(
+  {} as FormItemContextValue
+)
+
+const FormItem = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+  const id = React.useId()
+
+  return (
+    <FormItemContext.Provider value={{ id }}>
+      <div ref={ref} className={cn("space-y-2", className)} {...props} />
+    </FormItemContext.Provider>
+  )
+})
+FormItem.displayName = "FormItem"
+
+const FormLabel = React.forwardRef<
+  React.ElementRef<typeof LabelPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
+>(({ className, ...props }, ref) => {
+  const { error, formItemId } = useFormField()
+
+  return (
+    <Label
+      ref={ref}
+      className={cn(error && "text-red-500 dark:text-red-900", className)}
+      htmlFor={formItemId}
+      {...props}
+    />
+  )
+})
+FormLabel.displayName = "FormLabel"
+
+const FormControl = React.forwardRef<
+  React.ElementRef<typeof Slot>,
+  React.ComponentPropsWithoutRef<typeof Slot>
+>(({ ...props }, ref) => {
+  const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
+
+  return (
+    <Slot
+      ref={ref}
+      id={formItemId}
+      aria-describedby={
+        !error
+          ? `${formDescriptionId}`
+          : `${formDescriptionId} ${formMessageId}`
       }
+      aria-invalid={!!error}
+      {...props}
+    />
+  )
+})
+FormControl.displayName = "FormControl"
 
-      setFeedback("Submissão enviada com sucesso!");
-      // Opcional: limpar a seleção após o envio
-      setSelectedOption("");
-    } catch (error: any) {
-      console.error("Erro no submit:", error);
-      setFeedback("Falha ao enviar a submissão.");
-    } finally {
-      setLoading(false);
-    }
+const FormDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => {
+  const { formDescriptionId } = useFormField()
+
+  return (
+    <p
+      ref={ref}
+      id={formDescriptionId}
+      className={cn("text-sm text-neutral-500 dark:text-neutral-400", className)}
+      {...props}
+    />
+  )
+})
+FormDescription.displayName = "FormDescription"
+
+const FormMessage = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, children, ...props }, ref) => {
+  const { error, formMessageId } = useFormField()
+  const body = error ? String(error?.message) : children
+
+  if (!body) {
+    return null
   }
 
   return (
-    <main className="container mx-auto p-4">
-      <form onSubmit={handleSubmit}>
-        <Select
-          // Supondo que o componente Select tenha a prop `onValueChange`
-          // que retorna o valor selecionado. Caso contrário, adapte conforme sua implementação.
-          onValueChange={(value: string) => setSelectedOption(value)}
-          value={selectedOption}
-        >
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Favorite color" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="red">Red</SelectItem>
-            <SelectItem value="blue">Blue</SelectItem>
-            <SelectItem value="green">Green</SelectItem>
-            <SelectItem value="yellow">Yellow</SelectItem>
-            <SelectItem value="orange">Orange</SelectItem>
-            <SelectItem value="purple">Purple</SelectItem>
-            <SelectItem value="pink">Pink</SelectItem>
-            <SelectItem value="brown">Brown</SelectItem>
-            <SelectItem value="black">Black</SelectItem>
-            <SelectItem value="white">White</SelectItem>
-          </SelectContent>
-        </Select>
+    <p
+      ref={ref}
+      id={formMessageId}
+      className={cn("text-sm font-medium text-red-500 dark:text-red-900", className)}
+      {...props}
+    >
+      {body}
+    </p>
+  )
+})
+FormMessage.displayName = "FormMessage"
 
-       
-        <Button
-        variant="default"
-          type="submit"
-          disabled={loading}
-          className="mt-4 px-4 py-2"
-        >
-          {loading ? "Enviando..." : "Enviar"}
-        </Button>
-      </form>
-      
-      {feedback && <p className="mt-2">{feedback}</p>}
-    </main>
-  );
-};
-
-export default Form;
+export {
+  useFormField,
+  Form,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+  FormField,
+}

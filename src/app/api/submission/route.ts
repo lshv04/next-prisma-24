@@ -16,11 +16,7 @@ export async function POST(request: Request) {
     // Parseia o corpo da requisição (assumindo que ele está em JSON)
     const { option } = await request.json();
 
-    // Se estiver usando autenticação, obtenha o userId conforme sua implementação
-    // Por exemplo, se você usar cookies ou headers:
-    // const userId = extractUserId(request); // Implemente essa função conforme sua necessidade
-
-    // Aqui usamos um valor fixo para userId para fins de teste
+  
     const userId = user.id;
 
     const submission = await prisma.submission.create({

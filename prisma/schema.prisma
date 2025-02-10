@@ -23,3 +23,15 @@ model Submission {
   option    String   // Opção selecionada no formulário
   createdAt DateTime @default(now())
 }
+model UserData {
+  id       Int      @id @default(autoincrement())
+  userId   String   // ID do usuário (geralmente obtido via autenticação)
+  email    String   // E-mail do usuário
+  field1   String   // Primeiro campo de entrada
+  field2   String?  @default("")   // Tornado opcional com valor padrão ""
+  field3   String?  @default("")
+  field4   String?  @default("")
+  field5   String?  @default("")
+  createdAt DateTime @default(now())
+}
+
