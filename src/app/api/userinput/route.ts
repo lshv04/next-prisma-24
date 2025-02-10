@@ -2,18 +2,24 @@
 
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
+
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+
+
   try {
     // 1. Parseia o corpo da requisição para extrair o valor enviado
     const { userText } = await request.json();
 
     // 2. Aqui você pode capturar o userId e email do usuário autenticado.
     // Por enquanto, usamos valores fixos para fins de teste.
-    const userId = "dummy-user-id"; // Substitua pela lógica de autenticação
-    const email = "dummy@email.com"; // Substitua ou capture o e-mail real do usuário
+    const userId = user.id; // Substitua pela lógica de autenticação
+    const email = user.email!; // Substitua ou capture o e-mail real do usuário
 
     // 3. Cria um novo registro na base de dados usando o modelo UserData.
     // O valor recebido é armazenado em 'field1'
