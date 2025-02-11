@@ -12,8 +12,8 @@ export async function POST(request: Request) {
   const user = await getUser();
 
   try {
-    // 1. Parseia o corpo da requisição para extrair o valor enviado
-    const { userText } = await request.json();
+    // 1. Parseia o corpo da requisição para extrair os valores enviados
+    const { field1, field2, field3, field4, field5 } = await request.json();
 
     // 2. Captura o userId e o email do usuário autenticado
     const userId = user.id;
@@ -23,17 +23,21 @@ export async function POST(request: Request) {
     const record = await prisma.userData.upsert({
       where: { userId }, // Procura pelo registro que tenha o mesmo userId
       update: {
-        email,          // Atualiza o e-mail (caso seja necessário)
-        field1: userText, // Atualiza o valor de field1 com o novo userText
+        email,     // Atualiza o e-mail (caso seja necessário)
+        field1,
+        field2,
+        field3,
+        field4,
+        field5,
       },
       create: {
         userId,
         email,
-        field1: userText,  // Cria o registro com o valor recebido
-        field2: "",
-        field3: "",
-        field4: "",
-        field5: "",
+        field1,
+        field2,
+        field3,
+        field4,
+        field5,
       },
     });
 

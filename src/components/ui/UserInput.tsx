@@ -16,7 +16,11 @@ const Userinput = () => {
 
   const formMethods = useForm({
     defaultValues: {
-      userText: '',
+      field1: '',
+      field2: '',
+      field3: '',
+      field4: '',
+      field5: '',
     },
   })
 
@@ -25,25 +29,21 @@ const Userinput = () => {
   const onSubmit = async (data: any) => {
     setLoading(true)
     try {
-      // Realiza a chamada POST para a API, enviando o campo userText
+      // Realiza a chamada POST para a API, enviando todos os campos do formulário
       const response = await fetch('/api/userinput', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ userText: data.userText }),
+        body: JSON.stringify(data),
       })
 
       if (!response.ok) {
-        // Caso a resposta não seja ok, lança um erro
         throw new Error('Erro ao enviar os dados.')
       }
 
-      // Opcional: trate o resultado retornado pela API
       const result = await response.json()
       console.log('Registro salvo:', result)
-      
-      // Limpa os campos do formulário e define um feedback (se necessário)
       reset()
     } catch (error) {
       console.error('Erro ao enviar os dados:', error)
@@ -55,19 +55,81 @@ const Userinput = () => {
   return (
     <Form {...formMethods}>
       <form onSubmit={handleSubmit(onSubmit)}>
+        {/* Campo 1 */}
         <FormField
           control={control}
-          name="userText"
+          name="field1"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Digite seu texto:</FormLabel>
+              <FormLabel>Campo 1:</FormLabel>
               <FormControl className="w-[180px]">
-                <Input placeholder="type here..." {...field} />
+                <Input placeholder="Digite o campo 1..." {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+
+        {/* Campo 2 */}
+        <FormField
+          control={control}
+          name="field2"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Campo 2:</FormLabel>
+              <FormControl className="w-[180px]">
+                <Input placeholder="Digite o campo 2..." {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* Campo 3 */}
+        <FormField
+          control={control}
+          name="field3"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Campo 3:</FormLabel>
+              <FormControl className="w-[180px]">
+                <Input placeholder="Digite o campo 3..." {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* Campo 4 */}
+        <FormField
+          control={control}
+          name="field4"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Campo 4:</FormLabel>
+              <FormControl className="w-[180px]">
+                <Input placeholder="Digite o campo 4..." {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* Campo 5 */}
+        <FormField
+          control={control}
+          name="field5"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Campo 5:</FormLabel>
+              <FormControl className="w-[180px]">
+                <Input placeholder="Digite o campo 5..." {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <Button
           variant="default"
           type="submit"
