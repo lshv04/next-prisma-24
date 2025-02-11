@@ -1,62 +1,77 @@
 
 ![Banner](banner.png) 
 
-[English](#personal-project-next-kinde---23) | [Português](#projeto-pessoal-next-kinde---23) | [Images](#images)  
+[English](#personal-project-next-prisma---24) | [Português](#projeto-pessoal-next-prisma---24) | [Images](#images)  
 
-# Personal Project Next Kinde - 23
+# Personal Project Next Prisma - 24
 
-This is a personal project aimed at improving my skills in Next.js and exploring the use of the authentication tool Kinde. It also provides another opportunity to refine my Tailwind CSS and ShadCN skills.
+This personal project aims to enhance my skills with Next.js and Shadcn UI, while also introducing me to Prisma for advanced database management and user-side data manipulation.  
+
 
 ## 📁 Project Access  
 [See the final project in action](https://next-kinde-23.vercel.app/).
 
 ## ✔️ Techniques and technologies used  
-- **HTML/CSS**: Used for structuring and styling the application.  
-- **TypeScript**: Adds static typing to JavaScript, improving code reliability and maintainability.  
-- **Next.js**: A powerful framework for rendering static and dynamic pages with excellent performance.  
-- **Next.js Pagination**: Implemented to efficiently organize and display data across multiple pages.  
-- **Environment Variables**: Configured to securely store and protect API keys.  
-- **ShadCN UI**: Utilized to create modern, accessible, and visually appealing components like the Navbar.  
-- **Tailwind CSS**: Applied for rapid styling and building responsive layouts with utility-first classes.  
-- **Git/GitHub**: Essential tools for version control and collaborative code hosting.  
-- **Vercel**: Deployment platform used to publish and host the project seamlessly.  
-- **Kinde**: Integrated for user authentication and access management.  
-- **Middleware**: Implemented with Kinde to protect and manage route access securely.  
+- **HTML/CSS**: Used for markup and styling.  
+- **TypeScript**: Used to add static typing to JavaScript, increasing code security.  
+- **NEXT.js**: Framework used for rendering static and dynamic pages with excellent performance.  
+- **Next.js Pagination**: Implemented to organize and display data across multiple pages.  
+- **Environment Variable**: Created to protect API keys used in the project.  
+- **Shadcn UI**: Used to create modern and visually appealing components like Navbar, Forms, Input, and Button.  
+- **Tailwind.css**: Employed for styling and building responsive layouts efficiently.  
+- **Git/GitHub**: Tools used for version control and code hosting.  
+- **Vercel**: Platform used to publish and host the project.  
+- **Kinde**: Used to implement and configure user authentication.  
+- **Middleware**: Used a middleware setup with Kinde to protect routes.  
+- **Prisma**: Utilized for robust database management and ORM integration.  
+- **Prisma Schema (schema.prisma)**: Defines the data models and relationships in the project’s database.  
+- **Prisma API Routing**: Configures API endpoints to enable backend communication with the database through Prisma.  
+- **Prisma Front-end Component**: Provides a user interface for interacting with and managing data seamlessly.  
+ 
 
+## ⚠️ Challenges  
+    Ensuring that each user had only one row required significant effort. Additionally, users could modify any of the five fields, with only the fields they altered being updated in the Prisma database.
+
+    
 
 ---
 
-# Projeto Pessoal Next Kinde - 23
+# Projeto Pessoal Next Prisma - 24
 
-Este é um projeto pessoal com o objetivo de aprimorar minhas habilidades em Next.js e explorar o uso da ferramenta de autenticação Kinde. Também é uma oportunidade para aperfeiçoar minhas habilidades com Tailwind CSS e ShadCN.
+Este projeto pessoal tem como objetivo aprimorar minhas habilidades com Next.js e Shadcn UI, ao mesmo tempo em que me apresenta ao Prisma para o gerenciamento avançado de banco de dados e manipulação de dados pelo usuário.  
+
 
 ## 📁 Acesso ao projeto  
 [Veja o projeto final do curso em funcionamento](https://next-kinde-23.vercel.app/).
 
 ## ✔️ Técnicas e tecnologias utilizadas  
-- **HTML/CSS**: Utilizado para estruturar e estilizar a aplicação.  
-- **TypeScript**: Adiciona tipagem estática ao JavaScript, melhorando a confiabilidade e a manutenção do código.  
-- **Next.js**: Um framework poderoso para renderização de páginas estáticas e dinâmicas com excelente desempenho.  
-- **Paginação no Next.js**: Implementada para organizar e exibir dados de forma eficiente em várias páginas.  
-- **Variáveis de Ambiente**: Configuradas para armazenar e proteger chaves de API com segurança.  
-- **ShadCN UI**: Utilizado para criar componentes modernos, acessíveis e visualmente atraentes, como a Navbar.  
-- **Tailwind CSS**: Aplicado para estilização rápida e construção de layouts responsivos com classes utilitárias.  
-- **Git/GitHub**: Ferramentas essenciais para controle de versão e hospedagem colaborativa de código.  
-- **Vercel**: Plataforma de implantação utilizada para publicar e hospedar o projeto de forma eficiente.  
-- **Kinde**: Integrado para autenticação de usuários e gerenciamento de acessos.  
-- **Middleware**: Implementado com Kinde para proteger e gerenciar o acesso às rotas com segurança.  
+- **HTML/CSS**: Utilizado para marcação e estilização.  
+- **TypeScript**: Utilizado para adicionar tipagem estática ao JavaScript, aumentando a segurança do código.  
+- **NEXT.js**: Framework utilizado para renderizar páginas estáticas e dinâmicas com desempenho excelente.  
+- **Next.js Pagination**: Implementado para organizar e exibir dados em várias páginas.  
+- **Variável de Ambiente**: Criada para proteger as chaves de API utilizadas no projeto.  
+- **Shadcn UI**: Utilizado para criar componentes modernos e visualmente atraentes, como Navbar, Formulários, Input e Botão.  
+- **Tailwind.css**: Utilizado para estilização e construção de layouts responsivos de forma eficiente.  
+- **Git/GitHub**: Ferramentas utilizadas para controle de versão e hospedagem de código.  
+- **Vercel**: Plataforma utilizada para publicar e hospedar o projeto.  
+- **Kinde**: Utilizado para implementar e configurar a autenticação de usuários.  
+- **Middleware**: Utilizado um middleware configurado com o Kinde para proteger as rotas.  
+- **Prisma**: Utilizado para gerenciamento robusto de banco de dados e integração ORM.  
+- **Prisma Schema (schema.prisma)**: Define os modelos de dados e os relacionamentos no banco de dados do projeto.  
+- **Prisma API Routing**: Configura endpoints de API para possibilitar a comunicação entre o backend e o banco de dados via Prisma.  
+- **Prisma Front-end Component**: Fornece uma interface de usuário para interagir com e gerenciar os dados de forma fluida.  
+ 
 
+## ⚠️ Desafios  
+Garantir que cada usuário tivesse apenas uma linha exigiu um esforço significativo. Além disso, os usuários poderiam modificar qualquer um dos cinco campos, sendo que apenas os campos alterados seriam atualizados no banco de dados Prisma.
 
 ---
 
 ## Images
 
-
-
-
 ![alt text](image.png)  
 ![alt text](image-1.png)  
 ![alt text](image-2.png)  
-![alt text](image-3.png)  
-![alt text](image-4.png)  
+
+
 

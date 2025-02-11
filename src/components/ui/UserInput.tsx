@@ -62,9 +62,9 @@ const Userinput = () => {
           name="field1"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Campo 1:</FormLabel>
-              <FormControl className="w-[180px]">
-                <Input placeholder="Digite o campo 1..." {...field} />
+              <FormLabel>Field 1:</FormLabel>
+              <FormControl className="w-40">
+                <Input placeholder="Type field 1..." {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -77,9 +77,9 @@ const Userinput = () => {
           name="field2"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Campo 2:</FormLabel>
-              <FormControl className="w-[180px]">
-                <Input placeholder="Digite o campo 2..." {...field} />
+              <FormLabel>Field 2:</FormLabel>
+              <FormControl className="w-40">
+                <Input placeholder="Type field 2..." {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -92,9 +92,9 @@ const Userinput = () => {
           name="field3"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Campo 3:</FormLabel>
-              <FormControl className="w-[180px]">
-                <Input placeholder="Digite o campo 3..." {...field} />
+              <FormLabel>Field 3:</FormLabel>
+              <FormControl className="w-40">
+                <Input placeholder="Type field 3..." {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -107,9 +107,9 @@ const Userinput = () => {
           name="field4"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Campo 4:</FormLabel>
-              <FormControl className="w-[180px]">
-                <Input placeholder="Digite o campo 4..." {...field} />
+              <FormLabel>Field 4:</FormLabel>
+              <FormControl className="w-40">
+                <Input placeholder="Type field 4..." {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -122,9 +122,9 @@ const Userinput = () => {
           name="field5"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Campo 5:</FormLabel>
-              <FormControl className="w-[180px]">
-                <Input placeholder="Digite o campo 5..." {...field} />
+              <FormLabel>Field 5:</FormLabel>
+              <FormControl className="w-40">
+                <Input placeholder="Type field 5..." {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -137,7 +137,7 @@ const Userinput = () => {
           disabled={loading}
           className="mt-4 px-4 py-2"
         >
-          {loading ? 'Enviando...' : 'Enviar'}
+          {loading ? 'Sending...' : 'Send'}
         </Button>
       </form>
     </Form>

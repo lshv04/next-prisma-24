@@ -26,15 +26,15 @@ const Dashboard: NextPage = async () => {
       <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
       {isUserAuthenticated ? (
         <div>
-          <h2>Informações do usuário autenticado:</h2>
+          <h2>User Info:</h2>
           <p>Email: {user.email}</p>
           <p>
-            Nome: {user.given_name} {user.family_name}
+            Name: {user.given_name} {user.family_name}
           </p>
 
           {userData ? (
             <div className="mt-4">
-              <h3>Dados do Registro do Usuário</h3>
+              <h3>User input Data:</h3>
               <p>Field1: {userData.field1}</p>
               <p>Field2: {userData.field2 ?? "Não definido"}</p>
               <p>Field3: {userData.field3 ?? "Não definido"}</p>
