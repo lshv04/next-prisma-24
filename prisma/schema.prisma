@@ -28,10 +28,11 @@ model UserData {
   userId    String   @unique  // Define userId como único para garantir um registro por usuário
   email     String   // E-mail do usuário
   field1    String   // Primeiro campo de entrada
-  field2    String?  @default("")  // Campos opcionais com valor padrão
-  field3    String?  @default("")
-  field4    String?  @default("")
-  field5    String?  @default("")
+  field2    String?  // Campo opcional, podendo ser null
+  field3    String?  // Campo opcional, podendo ser null
+  field4    String?  // Campo opcional, podendo ser null
+  field5    String?  // Campo opcional, podendo ser null
   createdAt DateTime @default(now())
 }
+
 
