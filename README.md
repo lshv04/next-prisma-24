@@ -8,8 +8,7 @@
 This personal project aims to enhance my skills with Next.js and Shadcn UI, while also introducing me to Prisma for advanced database management and user-side data manipulation.  
 
 
-## 📁 Project Access  
-[See the final project in action](https://next-kinde-23.vercel.app/).
+
 
 ## ✔️ Techniques and technologies used  
 - **HTML/CSS**: Used for markup and styling.  
@@ -41,8 +40,6 @@ This personal project aims to enhance my skills with Next.js and Shadcn UI, whil
 Este projeto pessoal tem como objetivo aprimorar minhas habilidades com Next.js e Shadcn UI, ao mesmo tempo em que me apresenta ao Prisma para o gerenciamento avançado de banco de dados e manipulação de dados pelo usuário.  
 
 
-## 📁 Acesso ao projeto  
-[Veja o projeto final do curso em funcionamento](https://next-kinde-23.vercel.app/).
 
 ## ✔️ Técnicas e tecnologias utilizadas  
 - **HTML/CSS**: Utilizado para marcação e estilização.  
