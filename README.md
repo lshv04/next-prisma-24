@@ -30,7 +30,7 @@ This personal project aims to enhance my skills with Next.js and Shadcn UI, whil
  
 
 ## ⚠️ Challenges  
-    Ensuring that each user had only one row required significant effort. Additionally, users could modify any of the five fields, with only the fields they altered being updated in the Prisma database.
+  Ensuring that each user had only one row required significant effort. Additionally, users could modify any of the five fields, with only the fields they altered being updated in the Prisma database.
 
     
 
